@@ -1,4 +1,78 @@
 {
+  "abcnews": {
+    "link": "https://abcnews.go.com/"
+  },
+  "wired": {
+    "link": "https://www.wired.com/"
+  },
+  "wsj": {
+    "link": "https://www.thestreet.com/"
+  },
+ 
+  "cnbc": {
+     "rss": "https://www.cnbc.com/id/100003114/device/rss/rss.html",
+    "link": "https://www.cnbc.com/"
+  },
+  "cnbc1": {
+     "rss": "https://www.cnbc.com/id/100727362/device/rss/rss.html",
+    "link": "https://www.cnbc.com/"
+  },
+  "cnbc2": {
+     "rss": "https://www.cnbc.com/id/15837362/device/rss/rss.html",
+    "link": "https://www.cnbc.com/"
+  },
+  "cnbc4": {
+     "rss": "https://www.cnbc.com/id/10001147/device/rss/rss.html",
+    "link": "https://www.cnbc.com/"
+  },
+  "cnbc5": {
+     "rss": "https://www.cnbc.com/id/10000664/device/rss/rss.html",
+    "link": "https://www.cnbc.com/"
+  },
+  "cnbc6": {
+     "rss": "https://www.cnbc.com/id/10000113/device/rss/rss.html",
+    "link": "https://www.cnbc.com/"
+  },
+  "usatoday": {
+      "link": "https://www.usatoday.com/"
+  },
+  "nypost": {
+     "rss": "https://nypost.com/news/feed/",
+    "link": "https://nypost.com/"
+  },
+  "nypost1": {
+     "rss": "https://nypost.com/business/feed/",
+    "link": "https://nypost.com/"
+  },
+  "reuters": {
+    "rss": "http://feeds.reuters.com/Reuters/PoliticsNews",
+    "link": "https://www.reuters.com/"
+  },
+  "reuters1": {
+    "rss": "http://feeds.reuters.com/Reuters/domesticNews",
+    "link": "https://www.reuters.com/"
+  },
+  "reuters2": {
+    "rss": "http://feeds.reuters.com/Reuters/worldNews",
+    "link": "https://www.reuters.com/"
+  },
+  "reuters3": {
+    "rss": "http://feeds.reuters.com/reuters/topNews",
+    "link": "https://www.reuters.com/"
+  },
+  "reuters4": {
+    "rss": "http://feeds.reuters.com/Reuters/PoliticsNews",
+    "link": "https://www.reuters.com/"
+  },
+  "cbsnews": {
+    "link": "https://www.cbsnews.com/"
+  },
+  "news9": {
+    "link": "http://www.news9.com/"
+  },
+  "aol": {
+    "link": "https://www.aol.com/news/"
+  },
   "cnn": {
     "link": "http://edition.cnn.com/"
   },

@@ -6,7 +6,7 @@ from time import mktime
 from datetime import datetime
 
 # Set the limit for number of articles to download
-LIMIT = 100
+LIMIT = 1000
 
 data = {}
 data['newspapers'] = {}
@@ -20,7 +20,7 @@ with open('NewsPapers.json') as data_file:
 #for v in companies:
     #print (v, companies[v])
 
-article_file = open("Articles.txt", "w")
+article_file = open("Articles.txt", "a")
 
 article_list = []
 
@@ -77,6 +77,7 @@ for company, value in companies.items():
             "articles": []
         }
         noneTypeCount = 0
+        # print(paper.articles)
         #print (type(paper))
         for content in paper.articles:
             if count > LIMIT:
@@ -93,12 +94,13 @@ for company, value in companies.items():
             if content.publish_date is None:
                 print(count, " Article has date of type None...")
                 noneTypeCount = noneTypeCount + 1
-                if noneTypeCount > 10:
-                    print("Too many noneType dates, aborting...")
-                    noneTypeCount = 0
-                    break
+                # if noneTypeCount > 10:
+                #     print("Too many noneType dates, aborting...")
+                #     noneTypeCount = 0
+                    # break
             
-            
+            if content.title is None or content.text is None:
+                continue
             
             article = {}
             article['title'] = content.title
@@ -110,7 +112,7 @@ for company, value in companies.items():
             #article['published'] = content.publish_date.isoformat()
             newsPaper['articles'].append(article)
             
-            print(count, "articles downloaded from", company, " using newspaper, url: ", content.url)
+            print(count, "article downloaded from", company, " using newspaper, url: ", content.url)
             count = count + 1
             noneTypeCount = 0
 
