@@ -22,7 +22,13 @@ with open('NewsPapers.json') as data_file:
 
 article_file = open("Articles.txt", "a")
 
-article_list = []
+import pickle
+a=open('articles.pickle','rb')
+article_list = pickle.load(a)
+a.close()
+
+
+# article_list = []
 
 count = 1
 
@@ -61,8 +67,10 @@ for company, value in companies.items():
                 continue
             article['title'] = content.title
             article['text'] = content.text
-            article_file.write("-------------------"+content.title+"\n\n\n\n\n\n\n" )
-            article_file.write(content.text)
+            # article_file.write("-------------------"+content.title+"\n\n\n\n\n\n\n" )
+            # article_file.write(content.text)
+
+            article_list.append([company,entry.link,content.title,content.text])
             
             newsPaper['articles'].append(article)
             print(count, "articles downloaded from", company, ", url: ", entry.link)
@@ -105,14 +113,15 @@ for company, value in companies.items():
             article = {}
             article['title'] = content.title
             article['text'] = content.text
-            article_file.write("-------------------"+content.title+ "\n\n\n\n\n\n" )
-            article_file.write(article['text'])
+            # article_file.write("-------------------"+content.title+ "\n\n\n\n\n\n" )
+            # article_file.write(article['text'])
             #article_list.append(content.text)
             article['link'] = content.url
             #article['published'] = content.publish_date.isoformat()
             newsPaper['articles'].append(article)
             
             print(count, "article downloaded from", company, " using newspaper, url: ", content.url)
+            article_list.append([company,content.url,content.title,article['text']])
             count = count + 1
             noneTypeCount = 0
 
@@ -127,6 +136,13 @@ for company, value in companies.items():
 
 
 article_file.close()
+
+import pickle
+
+fileObject = open('articles.pickle','wb')
+pickle.dump(article_list,fileObject)
+
+fileObject.close()
 
 #print ((data)) 
 
