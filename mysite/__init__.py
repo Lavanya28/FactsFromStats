@@ -1,0 +1,1 @@
+export DJANGO_SETTINGS_MODULE=myappfolder.settings.__init__
