@@ -10,13 +10,15 @@ from django.contrib import auth
 from app1.models import Articles
 from django.views.generic.base import TemplateView
 
+
+list_articles = Articles.objects.all()
 def index(request):
-    return render(request, 'news.html')
+    return render(request, 'login.html')
 
 def articles(request):
-    list_articles = Articles.objects.all()
-    return  HttpResponse(list_articles[0])
+	if 'q' in request.GET:
+		message = 'You searched for: %r' % request.GET['q']
+	return  HttpResponse(message)
 
 def news(request):
-	
-    return render(request,'news.html')
+    return render(request,'news.html',  {'list_articles': list_articles})

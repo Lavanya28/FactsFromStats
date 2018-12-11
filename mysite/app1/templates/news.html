@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE html>
 <html lang="en">
 {% load staticfiles %}
@@ -9,8 +11,38 @@
 </head>
 <body>
     <div class="element">
-        <p>Text</p>
+        <p><script type="text/javascript">
+           
+        </script></p>
     </div>
+
+    <!--<table>
+    <tr>
+        <th>SOURCE</th>
+        <th>TITLE</th>
+        <th>TEXT</th>
+        <th>LINK</th> 
+        <th>NUMBER OF UPVOTES</th>
+    </tr>
+    {% for item in list_articles %}
+    <tr> 
+        <td>{{ item.source }}</td>
+        
+        <td>{{ item.title}}</td>
+        <td>{{ item.text}}</td>
+        <td>{{ item.link}}</td>
+        <td>{{ item.number_of_upvotes}}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+-->
+   <form action="{% url 'articles' %}" method="get">
+        
+        <input type="text" name="q">
+        <input type="submit" value="Search">
+    
+    </form>
     <div class="element">
         <p>Images</p>
     </div>

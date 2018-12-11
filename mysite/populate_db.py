@@ -1,13 +1,17 @@
 
 import os
 import sys
+import pickle 
 os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 from django.core.management import execute_from_command_line
 execute_from_command_line(sys.argv)
 from app1.models import Articles, Author, ArticleSimilarity, Quiz 
 
+with open('articles.pickle', 'rb') as f: 
+	obj = pickle.load(f)
 
-list1 = [["cnn", "title 1", "text 1" , "url 1", 8 ] , ["cnn", "title 2", "text 2" , "url 2", 8 ] , ["bbc", "title 3", "text 3" , "url 3", 8 ], ["fox", "title 4", "text 4" , "url 4", 8 ] ] 
+
+#list1 = [["cnn", "title 1", "text 1" , "url 1", 8 ] , ["cnn", "title 2", "text 2" , "url 2", 8 ] , ["bbc", "title 3", "text 3" , "url 3", 8 ], ["fox", "title 4", "text 4" , "url 4", 8 ] ] 
 
 list2 = [ ["cnn", 4, 34], ["cnn", 4, 34], ["cnn", 4, 34] ,["cnn", 4, 34] ]
 
@@ -16,9 +20,9 @@ list3 = [ ["title 1", "title 2", 6], ["title 2", "title 3", 4] , ["title 1", "ti
 list4 = [["title 1", "quiz 1"], ["title 1", "quiz 1"] , ["title 1", "quiz 1"], ["title 1", "quiz 1"]]
 
 #populate Articles table: source title text link number_of_upvotes
-for ele in list1:
+for ele in obj:
 	try:
-		Articles.objects.create(source = ele[0], title = ele[1], text=ele[2], link=ele[3], number_of_upvotes=ele[4])
+		Articles.objects.create(source = ele[0], title = ele[2], text=ele[3], link=ele[1], number_of_upvotes=10)
 	except:
 		continue 
 
