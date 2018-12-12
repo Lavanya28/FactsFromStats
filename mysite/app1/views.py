@@ -11,7 +11,24 @@ from app1.models import Articles
 from django.views.generic.base import TemplateView
 
 
-list_articles = Articles.objects.all()
+list_articles = Articles.objects.all()[:10]
+processedlist = []
+for i in range(len(list_articles)):
+	j = list_articles[i]
+	text = j.text
+	finaltext =''
+	count=0
+	formlink = '<form action="{% url 'articles' %}" method="get"> \n <input type="text" name="q">\n<input type="submit" value="Search">\n</form>'
+	for j in text.split(' '):
+		finaltext += j + ' '
+		if count==50:
+			finaltext +=formlink
+		count+=1
+	if count<50:
+		finaltext += formlink
+
+
+
 def login(request):
     return render(request, 'login.html')
 def index(request):
