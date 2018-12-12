@@ -29,7 +29,7 @@
         <td>{{ item.source }}</td>
         
         <td>{{ item.title}}</td>
-        <td>{{ item.text}}<form action="{% url 'articles' %}" method="get"><input type="hidden" name="articleid" value="{{ item.id }}" ><input type="submit" value="Read more"></form></td>
+        <td>{{ item.text}}<form action="{% url 'articles' %}" method="get"><input type="hidden" name="articleid" value="{{ item.article_id }}" ><input type="submit" value="Read more"></form></td>
         <td>{{ item.link}}</td>
         <td>{{ item.number_of_upvotes}} </td>
     </tr>

@@ -17,16 +17,6 @@ for i in range(len(list_articles)):
 	j = list_articles[i]
 	text = j.text
 	finaltext = ' '.join(text.split(' ')[:50])
-	# count=0
-	# formlink = '<form action="{% url \'articles\' %}" method="get"> \n <input type="text" name="q">\n<input type="submit" value="Search">\n</form>'
-	# for k in text.split(' '):
-	# 	finaltext += k + ' '
-	# 	if count==50:
-	# 		finaltext +=formlink
-	# 		break
-	# 	count+=1
-	# if count<50:
-	# 	finaltext += formlink
 	j.text = finaltext
 	processedlist.append(j)
 
@@ -34,6 +24,7 @@ for i in range(len(list_articles)):
 
 def login(request):
     return render(request, 'login.html')
+
 def index(request):
     return render(request, 'login.html')
 
