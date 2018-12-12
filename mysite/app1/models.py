@@ -3,7 +3,8 @@ from django.db import models
 # Create your models here.
 
 class Articles(models.Model):
-	source = models.CharField(max_length=30)
+	article_id = models.IntegerField()
+	source_id = models.IntegerField()
 	title = models.CharField(max_length=150, primary_key = True)
 	text = models.CharField(max_length= 10000)
 	link = models.URLField()
@@ -12,16 +13,17 @@ class Articles(models.Model):
 
 	def __str__(self):
 
-        	return u'%s %s %s %s %s %s' %  (self.source,self.title,self.text,self.link,self.number_of_upvotes,self.agreement_index)
+        	return u'%s %s %s %s %s %s %s' %  (self.article_id, self.source_id,self.title,self.text,self.link,self.number_of_upvotes,self.agreement_index)
 
 class Author(models.Model):
+	source_id = models.IntegerField()
 	name = models.CharField(max_length=100)
 	reliability_index = models.FloatField()
 	number_of_posts = models.IntegerField()
 
 
 	def __str__(self):
-			return u'%s %s %s ' %  (self.name,self.reliability_index,self.number_of_posts)
+			return u'%s %s %s %s ' %  (self.source_id ,self.name,self.reliability_index,self.number_of_posts)
 
 
 class ArticleSimilarity(models.Model):
