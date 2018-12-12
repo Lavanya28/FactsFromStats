@@ -16,16 +16,19 @@ processedlist = []
 for i in range(len(list_articles)):
 	j = list_articles[i]
 	text = j.text
-	finaltext =''
-	count=0
-	formlink = '<form action="{% url 'articles' %}" method="get"> \n <input type="text" name="q">\n<input type="submit" value="Search">\n</form>'
-	for j in text.split(' '):
-		finaltext += j + ' '
-		if count==50:
-			finaltext +=formlink
-		count+=1
-	if count<50:
-		finaltext += formlink
+	finaltext = ' '.join(text.split(' ')[:50])
+	# count=0
+	# formlink = '<form action="{% url \'articles\' %}" method="get"> \n <input type="text" name="q">\n<input type="submit" value="Search">\n</form>'
+	# for k in text.split(' '):
+	# 	finaltext += k + ' '
+	# 	if count==50:
+	# 		finaltext +=formlink
+	# 		break
+	# 	count+=1
+	# if count<50:
+	# 	finaltext += formlink
+	j.text = finaltext
+	processedlist.append(j)
 
 
 
@@ -40,4 +43,4 @@ def articles(request):
 	return  HttpResponse(message)
 
 def news(request):
-    return render(request,'news.html',  {'list_articles': list_articles})
+    return render(request,'news.html',  {'list_articles': processedlist})

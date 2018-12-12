@@ -16,7 +16,7 @@
         </script></p>
     </div>
 
-    <!--<table>
+    <table>
     <tr>
         <th>SOURCE</th>
         <th>TITLE</th>
@@ -29,15 +29,15 @@
         <td>{{ item.source }}</td>
         
         <td>{{ item.title}}</td>
-        <td>{{ item.text}}</td>
+        <td>{{ item.text}}<form action="{% url 'articles' %}" method="get"><input type="hidden" name="articleid" value="{{ item.id }}" ><input type="submit" value="Read more"></form></td>
         <td>{{ item.link}}</td>
-        <td>{{ item.number_of_upvotes}}</td>
+        <td>{{ item.number_of_upvotes}} </td>
     </tr>
     {% endfor %}
     </table>
 
--->
-   <form action="{% url 'articles' %}" method="get">
+
+    <form action="{% url 'articles' %}" method="get">
         
         <input type="text" name="q">
         <input type="submit" value="Search">
