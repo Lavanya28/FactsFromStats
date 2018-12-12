@@ -38,9 +38,10 @@ def index(request):
     return render(request, 'login.html')
 
 def articles(request):
-	if 'q' in request.GET:
-		message = 'You searched for: %r' % request.GET['q']
+	if 'articleid' in request.GET:
+		message = 'You searched for: %r' % request.GET['articleid']
 	return  HttpResponse(message)
+	return render(request,'article.html',  {'article': articledet})
 
 def news(request):
     return render(request,'news.html',  {'list_articles': processedlist})
