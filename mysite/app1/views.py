@@ -41,7 +41,10 @@ def articles(request):
 	if 'articleid' in request.GET:
 		message = 'You searched for: %r' % request.GET['articleid']
 	return  HttpResponse(message)
-	return render(request,'article.html',  {'article': articledet})
+	articledet = 0 # fetch article details
+	sourcedet = 0 # fetch source details
+	relatedpost = 0 #fetch related articles, their url, title, match%
+	return render(request,'article.html',  {'article': articledet, 'relatedposts':relatedpost,'source':sourcedet})
 
 def news(request):
     return render(request,'news.html',  {'list_articles': processedlist})
