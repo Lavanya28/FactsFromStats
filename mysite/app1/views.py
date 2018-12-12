@@ -12,6 +12,8 @@ from django.views.generic.base import TemplateView
 
 
 list_articles = Articles.objects.all()
+def login(request):
+    return render(request, 'login.html')
 def index(request):
     return render(request, 'login.html')
 
