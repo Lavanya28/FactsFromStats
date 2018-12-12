@@ -6,8 +6,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 from django.core.management import execute_from_command_line
 execute_from_command_line(sys.argv)
 from app1.models import Articles, Author, ArticleSimilarity, Quiz 
-with open('cleanedarticles.pickle', 'rb') as f: 
-		obj = pickle.load(f)
+
 def populate():
 
 	with open('cleanedarticles.pickle', 'rb') as f: 
@@ -38,7 +37,7 @@ def populate():
 
 	for ele in obj:
 		try:
-			Articles.objects.create(source = ele[0], title = ele[2], text=ele[3], link=ele[1], number_of_upvotes=20, agreement_index=ele[4])
+			Articles.objects.create(source_id= ele[0] , link=ele[1] , title = ele[2], text=ele[3], agreement_index=ele[4], article_id = ele[5], number_of_upvotes=0)
 		except:
 			continue 
 
@@ -46,9 +45,22 @@ def populate():
 
 	for ele in obj_source:
 		try:
-			Author.objects.create(name=ele[0], reliability_index=ele[1], number_of_posts= 21)
+			Author.objects.create(source_id = ele[0], name=ele[1], reliability_index=ele[2], number_of_posts= 21)
 		except:
 			continue 
+
+	#list_articles = Articles.objects.all()
+
+	authors = Author.objects.all()
+
+	count = authors.count()
+#a=Articles.objects.filter(source_id=0)
+
+	for i in range(count):
+		a=len(Articles.objects.filter(source_id=i))
+		author = Author.objects.get(source_id=i)
+		author.number_of_posts=a
+		author.save()
 
 	#populate ArticleSimilarity table: article_title article_match similarity_percentage
 	for ele in obj_sim:
@@ -78,4 +90,4 @@ cleanup()
 populate()
 
 #print (len(obj[0]))
-		
+#print (len(obj_source[1]))		
