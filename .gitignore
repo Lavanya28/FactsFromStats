@@ -3,5 +3,3 @@
 *.pyc
 */*.pyc
 */*/*.pyc
-*/*.sqlite3
-*.sqlite3
