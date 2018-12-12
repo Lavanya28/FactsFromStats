@@ -6,9 +6,8 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'mysite.settings')
 from django.core.management import execute_from_command_line
 execute_from_command_line(sys.argv)
 from app1.models import Articles, Author, ArticleSimilarity, Quiz 
-with open('articlessimilarity.pickle','rb') as f:
-		obj_sim = pickle.load(f)
-
+with open('cleanedarticles.pickle', 'rb') as f: 
+		obj = pickle.load(f)
 def populate():
 
 	with open('cleanedarticles.pickle', 'rb') as f: 
@@ -39,7 +38,7 @@ def populate():
 
 	for ele in obj:
 		try:
-			Articles.objects.create(source = ele[0], title = ele[2], text=ele[3], link=ele[1], number_of_upvotes=ele[4])
+			Articles.objects.create(source = ele[0], title = ele[2], text=ele[3], link=ele[1], number_of_upvotes=20, agreement_index=ele[4])
 		except:
 			continue 
 
@@ -77,4 +76,6 @@ def cleanup():
 
 cleanup()
 populate()
+
+#print (len(obj[0]))
 		

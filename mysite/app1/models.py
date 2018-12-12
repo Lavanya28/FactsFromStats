@@ -8,14 +8,15 @@ class Articles(models.Model):
 	text = models.CharField(max_length= 10000)
 	link = models.URLField()
 	number_of_upvotes = models.IntegerField()
+	agreement_index=models.FloatField()
 
 	def __str__(self):
 
-        	return u'%s %s %s %s %s' %  (self.source,self.title,self.text,self.link,self.number_of_upvotes)
+        	return u'%s %s %s %s %s %s' %  (self.source,self.title,self.text,self.link,self.number_of_upvotes,self.agreement_index)
 
 class Author(models.Model):
 	name = models.CharField(max_length=100)
-	reliability_index = models.IntegerField()
+	reliability_index = models.FloatField()
 	number_of_posts = models.IntegerField()
 
 
@@ -27,7 +28,7 @@ class ArticleSimilarity(models.Model):
 
 	article_title = models.CharField(max_length=150)
 	article_match = models.CharField(max_length=1000)
-	similarity_percentage = models.IntegerField()
+	similarity_percentage = models.FloatField()
 
 	def __str__(self):
 			return u'%s %s %s ' %  (self.article_title,self.article_match,self.similarity_percentage)
