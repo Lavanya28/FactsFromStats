@@ -75,6 +75,6 @@ def cleanup():
 	d.delete()
 
 
-cleanup()
-#populate()
+# cleanup()
+populate()
 		
