@@ -75,12 +75,6 @@ def cleanup():
 	d=Quiz.objects.all()
 	d.delete()
 
-<<<<<<< HEAD
-
-# cleanup()
-=======
-#print (obj_sim[0])
 cleanup()
->>>>>>> 8633dda4a11719860dec34d3c444a9b19a99d12e
 populate()
 		
