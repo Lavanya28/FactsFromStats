@@ -10,14 +10,18 @@
     <title>WEB SITE</title>
 </head>
 <body>
+     <div>
+    <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
+    <a href="{% url 'createart' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Create Article </button> </a>
+    </div> 
+    <br>
+    <br>
     <div class="element">
         <p><script type="text/javascript">
            
         </script></p>
     </div>
-
-   
-    {% for item in list_articles %}
+        {% for item in list_articles %}
     <div style="width: 80%; padding: 10px">
         <div style="float:left; width: 15%;text-align: center; padding: 10px"> </br></br> <h2>{{ item.source }}</h2></div>
         <div style="float:left; width: 60%"> <div style=" background-color:#DCDCDC"> <h3 >{{ item.title}}</h3></div> <div style=" background-color:#F0F0F0"> <p style="margin: 0;"> {{ item.text}} <a href="./articles?articleid={{item.article_id}}"><u>Readmore</u></a> 

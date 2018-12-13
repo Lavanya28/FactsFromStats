@@ -44,13 +44,25 @@ def news(request):
 		pagenum = int(request.GET['pagenum'])
 		return render(request,'news.html',  {'list_articles': processedlist[pagenum*10:(pagenum+1)*10],'pagenum':pagenum+1})
 
-	return render(request,"new.html")
+	# return render(request,"news.html")
+
 def createarticles(request):
 	return render(request,'CreateArticle.html')
 
 def handlecreatearticles(request):
-	#val = request.GET['']
-	return
+	quiz = str(request.GET['quiz'])
+	article = str(request.GET['article'])
+	article_id_new = len(Articles.objects.all())
+	Articles.objects.create(source_id= 0 , link="https://www.thestreet.com/markets/flashback-friday-whats-the-market-smoking--14804612" , title = "flashback friday", text=article, agreement_index=0, article_id = article_id_new , number_of_upvotes=0)
+	Quiz.objects.create(article_id=article_id_new, quiz = quiz)
+
+	if not('pagenum' in request.GET):
+		return render(request,'news.html',  {'list_articles': processedlist[:10],'pagenum':0})
+	elif ('pagenum' in request.GET):
+		pagenum = int(request.GET['pagenum'])
+		return render(request,'news.html',  {'list_articles': processedlist[pagenum*10:(pagenum+1)*10],'pagenum':pagenum+1})
+
+	
 
 def sourcepage(request):
 	return render(request,'Sourcepage.html')

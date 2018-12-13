@@ -38,7 +38,6 @@ class ArticleSimilarity(models.Model):
 class Quiz(models.Model):
 	article_id = models.IntegerField()
 	quiz = models.CharField(max_length=1000)
-
 	def __str__(self):
 			return u'%s %s ' %  (self.article_id,self.quiz)
 
