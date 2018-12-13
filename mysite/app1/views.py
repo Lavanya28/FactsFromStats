@@ -53,7 +53,7 @@ def handlecreatearticles(request):
 	quiz = str(request.GET['quiz'])
 	article = str(request.GET['article'])
 	article_id_new = len(Articles.objects.all())
-	Articles.objects.create(source_id= 0 , link="https://www.thestreet.com/markets/flashback-friday-whats-the-market-smoking--14804612" , title = "flashback friday", text=article, agreement_index=0, article_id = article_id_new , number_of_upvotes=0)
+	Articles.objects.create(source_id= 0 , link="https://www.thestreet.com/markets/flashback-friday-whats-the-market-smoking--14804612" + str(article_id_new), title = "flashback friday"+str(article_id_new), text=article, agreement_index=0, article_id = article_id_new , number_of_upvotes=0)
 	Quiz.objects.create(article_id=article_id_new, quiz = quiz)
 
 	if not('pagenum' in request.GET):
