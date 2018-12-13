@@ -19,7 +19,10 @@
    
     {% for item in list_articles %}
     <div style="width: 80%; padding: 10px">
-        <div style="float:left; width: 15%;text-align: center; padding: 10px"> </br></br> <h2>{{ item.source }}</h2></div>
+        <div style="float:left; width: 15%;text-align: center; padding: 10px"> <img src="../static/imgs/{{item.source}}.png" style="padding-top: 30px; width:80%;max-width:80px;">
+<!-- 
+         </br></br> <h4>{{ item.source }}</h4> -->
+     </div>
         <div style="float:left; width: 60%"> <div style=" background-color:#DCDCDC"> <h3 >{{ item.title}}</h3></div> <div style=" background-color:#F0F0F0"> <p style="margin: 0;"> {{ item.text}} <a href="./articles?articleid={{item.article_id}}"><u>Readmore</u></a> 
            <!--  <form action="{% url 'articles' %}" method="get" style="margin-top:0px;padding-top:0px;"><input type="hidden" name="articleid" value="{{ item.article_id }}" ><input type="submit" value="Read more"></form> -->
         </p></div> </div>
