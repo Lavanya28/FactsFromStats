@@ -1,3 +1,4 @@
+
 import os
 import sys
 import pickle 
@@ -44,7 +45,7 @@ def populate():
 
 	for ele in obj_source:
 		try:
-			Author.objects.create(source_id = ele[0], name=ele[1], reliability_index=ele[2], number_of_posts= 21)
+			Author.objects.create(source_id = ele[0], name=ele[1], reliability_index=ele[2], number_of_posts= 0)
 		except:
 			continue 
 
@@ -64,14 +65,14 @@ def populate():
 	#populate ArticleSimilarity table: article_title article_match similarity_percentage
 	for ele in obj_sim:
 		try:
-			ArticleSimilarity.objects.create(article_title=ele[0], article_match=ele[1], similarity_percentage= ele[2])
+			ArticleSimilarity.objects.create(article_id=ele[0], article_match=ele[1], similarity_percentage= ele[2])
 		except:
 			continue
 
 	#populate Quiz table: article_title quiz
 	for ele in list4:
 		try:
-			Quiz.objects.create(article_title=ele[0], quiz=ele[1])
+			Quiz.objects.create(article_id=ele[0], quiz=ele[1])
 		except:
 			continue
 
