@@ -11,8 +11,9 @@
 </head>
 <body>
      <div>
-    <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
+    <a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
     <a href="{% url 'createart' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Create Article </button> </a>
+    <a href="{% url 'news' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Home </button> </a>
     </div> 
     <br>
     <br>

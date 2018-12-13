@@ -22,9 +22,6 @@ for i in range(len(list_articles)):
 def login(request):
     return render(request, 'login.html')
 
-def index(request):
-    return render(request, 'login.html')
-
 def articles(request):
 	if not('articleid' in request.GET):
 		return render(request,'news.html',  {'list_articles': processedlist})

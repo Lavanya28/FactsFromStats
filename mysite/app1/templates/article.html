@@ -8,6 +8,9 @@
     <title>WEB SITE</title>
 </head>
 <body>
+    <a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
+    <a href="{% url 'createart' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Create Article </button> </a>
+    <a href="{% url 'news' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Home </button> </a>
     <div style="width: 100%;padding: 20px;">
         <div style="width:50%; padding: 20px;float: left" >
              <a href="{{ article.link}}"><H2>{{ article.title}}</H2></a>
