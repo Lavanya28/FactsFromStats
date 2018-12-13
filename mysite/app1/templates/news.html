@@ -10,11 +10,18 @@
     <title>WEB SITE</title>
 </head>
 <body>
+     <div>
+    <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
+    <a href="{% url 'createart' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Create Article </button> </a>
+    </div> 
+    <br>
+    <br>
     <div class="element">
         <p><script type="text/javascript">
            
         </script></p>
     </div>
+
     {% for item in list_articles %}
     <div style="width: 80%; padding: 10px">
         <div style="float:left; width: 15%;text-align: center; padding: 10px"> <img src="../static/imgs/{{item.source}}.png" style="padding-top: 30px; width:80%;max-width:80px;">

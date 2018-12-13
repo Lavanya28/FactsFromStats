@@ -17,17 +17,22 @@
 <div class="container">
   <h2>Create your article here </h2>
   
-  <form action="{ % url 'handlecreatearticles' %}" method="get" >
+  <form action="{% url 'handlecreatearticles' %}" method="get" >
       <label for="comment">Text Area:</label>
-      <textarea class="form-control" rows="15" id="comment"></textarea>
+      
+      <textarea class="form-control" rows="15" name="article"></textarea>
+    
     <h2>Create your quiz here </h2>
     
       <label for="comment">Create Questions and Answers on each line, formatted as </label> <br>
+      
       <label>Question? </label> <br>
+        
         <label>Answer options seperate by , with the first option being correct answer </label>
-        <textarea class="form-control" id="quiz" rows="15" id="comment"></textarea>
+        
+        <textarea class="form-control" name ="quiz"  rows="15" id="comment"></textarea>
     
-    <button type="Submit" class="btn btn-primary" style="height:30px;width:150px;" onclick="quiz()" >Submit Article</button>
+    <button type="submit" class="btn btn-primary" style="height:30px;width:150px;"  >Submit Article</button>
   </form>
 </div>
 
