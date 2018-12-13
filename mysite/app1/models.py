@@ -28,18 +28,18 @@ class Author(models.Model):
 
 class ArticleSimilarity(models.Model):
 
-	article_title = models.CharField(max_length=150)
-	article_match = models.CharField(max_length=1000)
+	article_id = models.IntegerField()
+	article_match = models.IntegerField()
 	similarity_percentage = models.FloatField()
 
 	def __str__(self):
-			return u'%s %s %s ' %  (self.article_title,self.article_match,self.similarity_percentage)
+			return u'%s %s %s ' %  (self.article_id,self.article_match,self.similarity_percentage)
 
 class Quiz(models.Model):
-	article_title = models.CharField(max_length=150)
+	article_id = models.IntegerField()
 	quiz = models.CharField(max_length=1000)
 
 	def __str__(self):
-			return u'%s %s ' %  (self.article_title,self.quiz)
+			return u'%s %s ' %  (self.article_id,self.quiz)
 
 	 
