@@ -40,10 +40,11 @@ def articles(request):
 def news(request):
 	if not('pagenum' in request.GET):
 		return render(request,'news.html',  {'list_articles': processedlist[:10],'pagenum':0})
-	else:
+	elif ('pagenum' in request.GET):
 		pagenum = int(request.GET['pagenum'])
 		return render(request,'news.html',  {'list_articles': processedlist[pagenum*10:(pagenum+1)*10],'pagenum':pagenum+1})
 
+	return render(request,"new.html")
 def createarticles(request):
 	return render(request,'CreateArticle.html')
 
