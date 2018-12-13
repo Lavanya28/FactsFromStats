@@ -5,33 +5,44 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="all" type="text/css" href="{% static 'app1/style.css' %}" />
+    <!-- <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css"> -->
     <title>WEB SITE</title>
 </head>
 <body>
-    {{ article.title}}</br></br>
-    {{ article.text}} </br></br>
-    {{ article.link}}</br></br>
-    {{ article.number_of_upvotes}} </br></br>
-    {{ article.agreement_index}} </br></br>
-   
-    {{ source.name }}</br></br>
-    {{ source.reliability_index}}</br></br>
-    {{ source.number_of_posts}} </br></br>
-
-    <table>
-    <tr>
-        <th>TITLE</th>
-        <th>Similarity percentage</th>
-    </tr>
-    {% for item in relatedposts %}
-    <tr> 
-        <td>{{ item.title }}</td>
-        <td>{{ item.similarity_percentage}}</td>
-    </tr>
-    {% endfor %}
-     </table>
-
-
+    <div style="width: 100%">
+        <div style="width:50%; padding: 20px;float: left" >
+             <a href="{{ article.link}}"><H2>{{ article.title}}</H2></a>
+            {{ article.text}} </br></br>
+        </div>
+        <div style="width:30%; float: right;padding: 20px 60px;" >
+            </br></br></br>
+            <div class="w3-light-grey" style="width:70%">
+              <div class="w3-green" style="height:20px;width:25%"></div>
+            </div></br>
+            <div>
+            <h4>Agreement Index:</h4> <p style="text-align:center; margin-bottom: 10px;"> {{ article.agreement_index}}</p>
+             <hr> 
+            {{article.number_of_upvotes}} </br></br>
+            {{ source.name }}</br></br>
+            {{ source.reliability_index}}</br></br>
+            {{ source.number_of_posts}} </br></br>
+            <table>
+                <tr>
+                    <th>TITLE</th>
+                    <th>Similarity percentage</th>
+                </tr>
+                {% for item in relatedposts %}
+                <tr> 
+                    <td> <a href="./articles?articleid={{item.article_match}}"> {{ item.title }}</a></td>
+                    <td>{{ item.similarity_percentage}}</td>
+                </tr>
+                {% endfor %}
+            </table>
+            </div>
+        </div>
+    </div>
+    <div style="clear:both"></div>
+    </br></br>
     <form action="{% url 'articles' %}" method="get">
         
         <input type="text" name="q">
