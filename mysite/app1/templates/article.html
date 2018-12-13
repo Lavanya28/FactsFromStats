@@ -18,6 +18,20 @@
     {{ source.reliability_index}}</br></br>
     {{ source.number_of_posts}} </br></br>
 
+    <table>
+    <tr>
+        <th>TITLE</th>
+        <th>Similarity percentage</th>
+    </tr>
+    {% for item in relatedposts %}
+    <tr> 
+        <td>{{ item.title }}</td>
+        <td>{{ item.similarity_percentage}}</td>
+    </tr>
+    {% endfor %}
+     </table>
+
+
     <form action="{% url 'articles' %}" method="get">
         
         <input type="text" name="q">

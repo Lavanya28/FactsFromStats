@@ -34,8 +34,9 @@ def articles(request):
 	# return  HttpResponse(message)
 	articledet = Articles.objects.filter(article_id=request.GET['articleid'])[0] # fetch article details
 	sourcedet = Author.objects.filter(source_id=articledet.source_id)[0] # fetch source details
-	relatedpost = 0
-	# relatedpost = list(ArticleSimilarity.objects.filter(name="bbc")) #fetch related articles, their url, title, match%
+	relatedpost = list(ArticleSimilarity.objects.filter(article_id=request.GET['articleid'])) #fetch related articles, their url, title, match%
+	for i in range(len(relatedpost)):
+		relatedpost[i].title = Articles.objects.filter(article_id=relatedpost[i].article_match)[0].title
 	return render(request,'article.html',  {'article': articledet, 'relatedposts':relatedpost,'source':sourcedet})
 
 def news(request):
