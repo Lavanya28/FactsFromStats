@@ -20,8 +20,6 @@ for i in range(len(list_articles)):
 	j.text = finaltext
 	processedlist.append(j)
 
-
-
 def login(request):
     return render(request, 'login.html')
 
@@ -41,3 +39,14 @@ def articles(request):
 
 def news(request):
     return render(request,'news.html',  {'list_articles': processedlist})
+
+def createarticles(request):
+	return render(request,'CreateArticle.html')
+
+def handlecreatearticles(request):
+	#val = request.GET['']
+	return
+
+def sourcepage(request):
+
+	return render(request,'Sourcepage.html', )

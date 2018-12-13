@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load staticfiles %}
+<head>
+  <title>Bootstrap Example</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<script type="text/javascript">
+ 
+</script>
+<body>
+
+<div class="container">
+  <h2>Create your article here </h2>
+  
+  <form action="{ % url 'handlecreatearticles' %}" method="get" >
+      <label for="comment">Text Area:</label>
+      <textarea class="form-control" rows="15" id="comment"></textarea>
+    <h2>Create your quiz here </h2>
+    
+      <label for="comment">Create Questions and Answers on each line, formatted as </label> <br>
+      <label>Question? </label> <br>
+        <label>Answer options seperate by , with the first option being correct answer </label>
+        <textarea class="form-control" id="quiz" rows="15" id="comment"></textarea>
+    
+    <button type="Submit" class="btn btn-primary" style="height:30px;width:150px;" onclick="quiz()" >Submit Article</button>
+  </form>
+</div>
+
+</body>
+</html>
