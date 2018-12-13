@@ -8,25 +8,15 @@
     <title>WEB SITE</title>
 </head>
 <body>
-    <div class="element">
-        <p><script type="text/javascript">
-           
-        </script></p>
-    </div>
-
-    <table>
-    {% for item in list_articles %}
-    <tr> 
-        <td>{{ item.source }}</td>
-        
-        <td>{{ item.title}} {{item.article_id }} </td>
-        <td>{{ item.text}} <form action="{% url 'articles' %}" method="get"><input type="hidden" name="articleid" value={% item.article_id %}><input type="submit" value="Read more"></form></td>
-        <td>{{ item.link}}</td>
-        <td>{{ item.number_of_upvotes}} </td>
-    </tr>
-    {% endfor %}
-    </table>
-
+    {{ article.title}}</br></br>
+    {{ article.text}} </br></br>
+    {{ article.link}}</br></br>
+    {{ article.number_of_upvotes}} </br></br>
+    {{ article.agreement_index}} </br></br>
+   
+    {{ source.name }}</br></br>
+    {{ source.reliability_index}}</br></br>
+    {{ source.number_of_posts}} </br></br>
 
     <form action="{% url 'articles' %}" method="get">
         
