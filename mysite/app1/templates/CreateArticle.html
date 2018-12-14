@@ -19,24 +19,24 @@
 <body>
 
   <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
-  <div class="container">
-    <div class="navbar-header" style="float:right">
-      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-        <span class="sr-only">Toggle navigation</span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-        <span class="icon-bar"></span>
-      </button>
-      <a class="navbar-brand" href="{% url 'login' %}" style="font-size:30px;">Log out</a>
-    </div>
-    <div class="collapse navbar-collapse">
-      <ul class="nav navbar-nav" >
-        <li ><a href="{% url 'news' %}">Home</a></li>
-        <li><a href="{% url 'createart' %}">Create Article </a></li>
-      </ul>
-    </div><!-- /.nav-collapse -->
-  </div><!-- /.container -->
-</div><!-- /.navbar -->
+      <div class="container">
+        <div class="navbar-header" style="float:right">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'login' %}" style="font-size:15px;">Log out</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav" >
+            <li ><a href="{% url 'news' %}">Home</a></li>
+            <li><a href="{% url 'createart' %}">Create Article </a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
 
 <div class="container">
   <h2>Create your article here </h2>
