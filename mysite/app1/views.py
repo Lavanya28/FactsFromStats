@@ -58,4 +58,16 @@ def handlecreatearticles(request):
 	
 
 def sourcepage(request):
-	return render(request,'Sourcepage.html')
+	sourcename = request.GET['sourcename']
+	sourceid = Author.objects.filter(name=sourcename)
+	reliabilityindex = sourceid[0].reliability_index
+	#print (sourceid)
+	list_articles = list(Articles.objects.filter(source_id=sourceid[0].source_id))
+	processedlist = []
+	for i in range(len(list_articles)):
+		j = list_articles[i]
+		j.text =  ' '.join(j.text.split(' ')[:50])
+		j.source= (Author.objects.filter(source_id=j.source_id)[0]).name
+		processedlist.append(j)
+
+	return render(request,'Sourcepage.html', {'sourcename': sourcename, 'list_articles': processedlist, 'reliabilityindex':reliabilityindex })
