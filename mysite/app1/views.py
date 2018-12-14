@@ -21,14 +21,38 @@ def login(request):
     return render(request, 'login.html')
 
 def articles(request):
+	
+	if('upvote' in request.GET and 'articleid' in request.GET):
+		upv =request.GET['upvote']
+		aid=request.GET['articleid']
+
+		a=Articles.objects.filter(article_id = int(aid))
+		print (a)
+		if(upv=="1"):
+			
+			a[0].number_of_upvotes=a[0].number_of_upvotes+1
+			a[0].save()
+		else:
+			a[0].number_of_upvotes=a[0].number_of_upvotes-1
+			a[0].save()
+
+
+
+
 	if not('articleid' in request.GET):
 		return news(request)
+
+
 	articledet = Articles.objects.filter(article_id=request.GET['articleid'])[0] # fetch article details
 	sourcedet = Author.objects.filter(source_id=articledet.source_id)[0] # fetch source details
 	relatedpost = list(ArticleSimilarity.objects.filter(article_id=request.GET['articleid'])) #fetch related articles, their url, title, match%
 	for i in range(len(relatedpost)):
 		relatedpost[i].title = Articles.objects.filter(article_id=relatedpost[i].article_match)[0].title
 	return render(request,'article.html',  {'article': articledet, 'relatedposts':relatedpost,'source':sourcedet})
+
+
+
+
 
 def news(request):
 	if not('pagenum' in request.GET):
@@ -62,7 +86,7 @@ def handlecreatearticles(request):
 def upvoting(request):
 	
 	a=request.GET['upvote']
-	
+
 	sourcename=request.GET['sourcename']
 	if(a=="+1"):
 		author = Author.objects.filter(name= sourcename)
