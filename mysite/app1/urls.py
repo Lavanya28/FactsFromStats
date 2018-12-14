@@ -10,5 +10,6 @@ urlpatterns = [
     path('news', views.news, name = 'news'),
     path('handlecreatearticles', views.handlecreatearticles , name="handlecreatearticles"),
     path('createart',views.createarticles, name="createart"),
-    path('sourcepage', views.sourcepage),
+    path('upvoting', views.upvoting, name ="upvoting"),
+    path('sourcepage', views.sourcepage, name="sourcepage"),
     ]

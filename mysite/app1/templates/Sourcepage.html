@@ -51,11 +51,13 @@ function myFunction() {
 
 
 
-<button type="button" class="btn btn-primary" style="height:50px;width:150px;" >Vote for Reliability</button>
 
-<a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;" >upvote </button> </a>
+<button type="button" class="btn btn-primary" style="height:30px;width:150px;" >Vote for Reliability</button>
 
-<button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;">Reliability index: {{reliabilityindex}} </button>
+<a href="./upvoting?upvote=1,sourcename={{sourcename}}" > <img src="../static/imgs/up.png" style="padding-top: 0px; width:50px;max-width:100px;"> </a>
+<a href="./upvoting?upvote=-1,sourcename={{sourcename}}" > <img src="../static/imgs/down.png"  style="padding-top: 0px; width:50px;max-width:100px;"> </a>
+
+<button type="button" class="btn btn-primary" style="height:30px;width:150px;float: right;">Reliability index: {{reliabilityindex}} </button>
 {% load static %}
 <center> <img src="../static/imgs/{{sourcename}}.png" style="padding-top: 30px; width:150px;max-width:180px;"> </center>
 
