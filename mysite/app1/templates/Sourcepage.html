@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
+{% load staticfiles %}
 <head>
 	<title>Bootstrap Example</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <!-- Bootstrap core CSS -->
+  <link href="{% static 'app1/bootstrap.css' %}" rel="stylesheet">
+  <!-- Custom styles for this template -->
+  <link href="{% static 'app1/offcanvas.css' %}" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+
 </head>
 <script>
 function myFunction() {
@@ -21,6 +28,27 @@ function myFunction() {
 <!-- <button type="button" style="height:50px;width:250px" onclick="alert('Hello world!')"></button>
 <button type="button" style="height:50px;width:250px;float: right;" onclick="alert('Hello world!')" >Click Me!</button>
  -->
+<div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+  <div class="container">
+    <div class="navbar-header" style="float:right">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="{% url 'login' %}" style="font-size:30px;">Log out</a>
+    </div>
+    <div class="collapse navbar-collapse">
+      <ul class="nav navbar-nav" >
+        <li ><a href="{% url 'news' %}">Home</a></li>
+        <li><a href="{% url 'createart' %}">Create Article </a></li>
+      </ul>
+    </div><!-- /.nav-collapse -->
+  </div><!-- /.container -->
+</div><!-- /.navbar -->
+
+
 <button type="button" class="btn btn-primary" style="height:50px;width:150px;" >Vote for Reliability</button>
 <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;">Reliability index: {{reliabilityindex}} </button>
 {% load static %}
@@ -35,7 +63,7 @@ function myFunction() {
         
         <div style="float:left; width: 60%"> <div style=" background-color:#DCDCDC"> <h3 >{{ item.title}}</h3></div> <div style=" background-color:#F0F0F0"> <p style="margin: 0;"> {{ item.text}} <a href="./articles?articleid={{item.article_id}}"><u>Readmore</u></a> 
         </p></div> </div>
-        <div > <h4>Agreement Index:</h4>{{item.agreement_index}}</div>
+        <div > <h4>Agreement Index:</h4>{{item.agreement_index|floatformat:2}}</div>
     </div>
     <div style="clear:both"></div>
     </br></br>
