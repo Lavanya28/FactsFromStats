@@ -1,5 +1,5 @@
 from django.shortcuts import render
-
+import math
 # Create your views here.
 from django.http import HttpResponse
 from django.shortcuts import render, redirect
@@ -90,15 +90,16 @@ def upvoting(request):
 	sourcename=request.GET['sourcename']
 	if(a=="+1"):
 		author = Author.objects.filter(name= sourcename)
-		reliability = author.reliability_index
-		new_reliability = reliability + log(1+1/author.number_of_post)
-		author.reliability_index = new_reliability
+		reliability = author[0].reliability_index
+		new_reliability = reliability + math.log(1+1/author[0].number_of_posts)
+		author[0].reliability_index = new_reliability
+		author[0].save()
 	else:
 		author = Author.objects.filter(name= sourcename)
-		reliability = author.reliability_index
-		new_reliability = reliability - log(1+1/author.number_of_post)
-		author.reliability_index = new_reliability
-
+		reliability = author[0].reliability_index
+		new_reliability = reliability + math.log(1+1/author[0].number_of_posts)
+		author[0].reliability_index = new_reliability
+		author[0].save()
 	sourceid = Author.objects.filter(name=sourcename)
 	reliabilityindex = sourceid[0].reliability_index
 	#print (sourceid)
