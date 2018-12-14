@@ -16,6 +16,7 @@ for i in range(len(list_articles)):
 	j.text =  ' '.join(j.text.split(' ')[:50])
 	j.source= (Author.objects.filter(source_id=j.source_id)[0]).name
 	processedlist.append(j)
+random.shuffle(processedlist)
 
 def login(request):
     return render(request, 'login.html')
