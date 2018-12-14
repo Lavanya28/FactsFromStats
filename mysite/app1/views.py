@@ -118,9 +118,6 @@ def upvoting(request):
 
 
 def sourcepage(request):
-	
-	
-
 	sourcename = request.GET['sourcename']
 	sourceid = Author.objects.filter(name=sourcename)
 	reliabilityindex = sourceid[0].reliability_index
