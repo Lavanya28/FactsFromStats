@@ -21,7 +21,6 @@ def login(request):
     return render(request, 'login.html')
 
 def articles(request):
-	
 	if('upvote' in request.GET and 'articleid' in request.GET):
 		upv =request.GET['upvote']
 		aid=request.GET['articleid']
@@ -29,19 +28,14 @@ def articles(request):
 		a=Articles.objects.filter(article_id = int(aid))
 		print (a)
 		if(upv=="1"):
-			
 			a[0].number_of_upvotes=a[0].number_of_upvotes+1
 			a[0].save()
 		else:
 			a[0].number_of_upvotes=a[0].number_of_upvotes-1
 			a[0].save()
 
-
-
-
 	if not('articleid' in request.GET):
 		return news(request)
-
 
 	articledet = Articles.objects.filter(article_id=request.GET['articleid'])[0] # fetch article details
 	sourcedet = Author.objects.filter(source_id=articledet.source_id)[0] # fetch source details
