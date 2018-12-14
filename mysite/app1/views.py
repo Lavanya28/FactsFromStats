@@ -44,17 +44,12 @@ def articles(request):
 		relatedpost[i].title = Articles.objects.filter(article_id=relatedpost[i].article_match)[0].title
 	return render(request,'article.html',  {'article': articledet, 'relatedposts':relatedpost,'source':sourcedet})
 
-
-
-
-
 def news(request):
 	if not('pagenum' in request.GET):
 		return render(request,'news.html',  {'list_articles': processedlist[:10],'pagenum':0})
 	elif ('pagenum' in request.GET):
 		pagenum = int(request.GET['pagenum'])
 		return render(request,'news.html',  {'list_articles': processedlist[pagenum*10:(pagenum+1)*10],'pagenum':pagenum+1})
-
 	# return render(request,"news.html")
 
 def createarticles(request):
@@ -74,9 +69,6 @@ def handlecreatearticles(request):
 		return render(request,'news.html',  {'list_articles': processedlist[pagenum*10:(pagenum+1)*10],'pagenum':pagenum+1})
 
 	
-
-	
-
 def upvoting(request):
 	
 	a=request.GET['upvote']
@@ -98,8 +90,6 @@ def upvoting(request):
 	reliabilityindex = sourceid[0].reliability_index
 	#print (sourceid)
 	
-
-
 	list_articles = list(Articles.objects.filter(source_id=sourceid[0].source_id))
 	processedlist = []
 	for i in range(len(list_articles)):
@@ -111,14 +101,11 @@ def upvoting(request):
 	return render(request,'Sourcepage.html', {'sourcename': sourcename, 'list_articles': processedlist, 'reliabilityindex':reliabilityindex })
 
 
-
 def sourcepage(request):
 	sourcename = request.GET['sourcename']
 	sourceid = Author.objects.filter(name=sourcename)
 	reliabilityindex = sourceid[0].reliability_index
 	#print (sourceid)
-	
-
 
 	list_articles = list(Articles.objects.filter(source_id=sourceid[0].source_id))
 	processedlist = []
