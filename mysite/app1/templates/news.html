@@ -41,8 +41,13 @@
      </div>
         <div style="float:left; width: 60%"> <div style=" background-color:#DCDCDC"> <h3 >{{ item.title}}</h3></div> <div style=" background-color:#F0F0F0"> <p style="margin: 0;"> {{ item.text}} <a href="./articles?articleid={{item.article_id}}"><u>Readmore</u></a> 
         </p></div> </div>
+        {% if item.agreement_index < 1 %}
+        <div style="float:right; padding-top: 30px"> <h4>No related articles</h4></div>
+
+        {% else %}
         <div style="float:right; padding-top: 30px"> <h4>Agreement Index:</h4>
             <p style="padding-left: 50px ">{{item.agreement_index|floatformat:2}}</p></div>
+        {% endif %}
     </div>
     <div style="clear:both"></div>
     </br></br>

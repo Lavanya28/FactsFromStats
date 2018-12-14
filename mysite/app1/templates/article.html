@@ -41,7 +41,11 @@
               <div class="w3-green" style="height:20px;width:25%"></div>
             </div></br> -->
             <div>
+                {% if article.agreement_index < 1 %}
+                <h4>No related articles</h4></br></br>
+                {% else %}
                 <h4>Agreement Index:</h4> <p style="text-align:center; margin-bottom: 10px;"> {{ article.agreement_index|floatformat:2}}</p></br>
+                {% endif %}
                 Number of Upvotes:{{article.number_of_upvotes}} 
                 <a href="./articles?articleid={{article.article_id}};upvote=1"><img src="../static/imgs/up.png" style="padding-top: 0px; width:20px;max-width:50px;"> </a>
                 <a href="./articles?articleid={{article.article_id}};upvote=-1"> <img src="../static/imgs/down.png" style="padding-top: 0px; width:20px;max-width:50px;"> </a>
