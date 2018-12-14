@@ -7,21 +7,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="all" type="text/css" href="{% static 'app1/style.css' %}" />
+     <!-- Bootstrap core CSS -->
+    <link href="{% static 'app1/bootstrap.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'app1/offcanvas.css' %}" rel="stylesheet">
+
     <title>WEB SITE</title>
 </head>
 <body>
-     <div>
-    <a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
-    <a href="{% url 'createart' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Create Article </button> </a>
-    <a href="{% url 'news' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Home </button> </a>
-    </div> 
-    <br>
+    <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header" style="float:right">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'login' %}" style="font-size:30px;">Log out</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav" >
+            <li ><a href="{% url 'news' %}">Home</a></li>
+            <li><a href="{% url 'createart' %}">Create Article </a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+
+     <!-- <div >
+        <a href=""> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: left;" > </button> </a>
+        <a href=""> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: left;" ></button> </a>
+        <a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" > </button> 
+    </div> -->
+    <!-- <br>
     <br>
     <div class="element">
         <p><script type="text/javascript">
            
         </script></p>
-    </div>
+    </div> -->
 
     {% for item in list_articles %}
     <div style="width: 80%; padding: 10px">
@@ -29,7 +54,8 @@
      </div>
         <div style="float:left; width: 60%"> <div style=" background-color:#DCDCDC"> <h3 >{{ item.title}}</h3></div> <div style=" background-color:#F0F0F0"> <p style="margin: 0;"> {{ item.text}} <a href="./articles?articleid={{item.article_id}}"><u>Readmore</u></a> 
         </p></div> </div>
-        <div style="float:right"> <h4>Agreement Index:</h4>{{item.agreement_index}}</div>
+        <div style="float:right; padding-top: 30px"> <h4>Agreement Index:</h4>
+            <p style="padding-left: 50px ">{{item.agreement_index|floatformat:2}}</p></div>
     </div>
     <div style="clear:both"></div>
     </br></br>

@@ -5,24 +5,50 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" media="all" type="text/css" href="{% static 'app1/style.css' %}" />
+     <link href="{% static 'app1/bootstrap.css' %}" rel="stylesheet">
+    <!-- Custom styles for this template -->
+    <link href="{% static 'app1/offcanvas.css' %}" rel="stylesheet">
+
     <title>WEB SITE</title>
 </head>
 <body>
-    <a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
-    <a href="{% url 'createart' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Create Article </button> </a>
-    <a href="{% url 'news' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;" >Home </button> </a>
+     <div class="navbar navbar-fixed-top navbar-inverse" role="navigation">
+      <div class="container">
+        <div class="navbar-header" style="float:right">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="{% url 'login' %}" style="font-size:30px;">Log out</a>
+        </div>
+        <div class="collapse navbar-collapse">
+          <ul class="nav navbar-nav" >
+            <li ><a href="{% url 'news' %}">Home</a></li>
+            <li><a href="{% url 'createart' %}">Create Article </a></li>
+          </ul>
+        </div><!-- /.nav-collapse -->
+      </div><!-- /.container -->
+    </div><!-- /.navbar -->
+    <!-- <div >
+        <a href="{% url 'news' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: left;" >Home </button> </a>
+        <a href="{% url 'createart' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: left;" >Create Article </button> </a>
+        <a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
+    </div>
+    <div style="clear:both"></div> -->
     <div style="width: 100%;padding: 20px;">
         <div style="width:50%; padding: 100px 20px;float: left" >
              <a href="{{ article.link}}"><H2>{{ article.title}}</H2></a>
             {{ article.text}} </br></br>
         </div>
-        <div style="width:30%; float: right;padding: 20px 60px;" >
+        <div style="width:40%; float: right;padding: 20px 60px;" >
             </br></br></br>
             <div class="w3-light-grey" style="width:70%">
               <div class="w3-green" style="height:20px;width:25%"></div>
             </div></br>
             <div>
-            <h4>Agreement Index:</h4> <p style="text-align:center; margin-bottom: 10px;"> {{ article.agreement_index}}</p></br>
+            <h4>Agreement Index:</h4> <p style="text-align:center; margin-bottom: 10px;"> {{ article.agreement_index|floatformat:2}}</p></br>
             Number of Upvotes:{{article.number_of_upvotes}} </br></br>
              <hr> 
             <div style="width: 100%; padding: 0px 70px">
@@ -31,12 +57,12 @@
             <p style="padding-bottom: 0px">Reliability Index: {{ source.reliability_index}} </br>
             Number of Posts: {{ source.number_of_posts}} </p>
             <hr> 
-            <h3 style="padding-left: 100px">Related Posts</h3>
+            <h3 style="padding-left: 10px">Related Posts</h3>
             <table>
                 {% for item in relatedposts %}
                 <tr> 
                     <td> <a href="./articles?articleid={{item.article_match}}"> {{ item.title }}</a></td>
-                    <td>{{ item.similarity_percentage}}% match</td>
+                    <td>{{ item.similarity_percentage|floatformat:1}}% match</td>
                 </tr>
                 {% endfor %}
             </table>
