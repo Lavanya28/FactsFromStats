@@ -26,15 +26,15 @@ def articles(request):
 		upv =request.GET['upvote']
 		aid=request.GET['articleid']
 
-		a=Articles.objects.filter(article_id = int(aid))
-		print (a)
+		a=Articles.objects.filter(article_id = int(aid))[0]
+		#print (a)
 		if(upv=="1"):
-			
-			a[0].number_of_upvotes=a[0].number_of_upvotes+1
-			a[0].save()
+			print("here 1")
+			a.number_of_upvotes=a.number_of_upvotes+1
+			a.save()
 		else:
-			a[0].number_of_upvotes=a[0].number_of_upvotes-1
-			a[0].save()
+			a.number_of_upvotes=a.number_of_upvotes-1
+			a.save()
 
 
 
@@ -69,8 +69,9 @@ def createarticles(request):
 def handlecreatearticles(request):
 	quiz = str(request.GET['quiz'])
 	article = str(request.GET['article'])
+	title=str(request.GET['title'])
 	article_id_new = len(Articles.objects.all())
-	Articles.objects.create(source_id= 0 , link="https://www.thestreet.com/markets/flashback-friday-whats-the-market-smoking--14804612" + str(article_id_new), title = "flashback friday"+str(article_id_new), text=article, agreement_index=0, article_id = article_id_new , number_of_upvotes=0)
+	Articles.objects.create(source_id= 0 , link="https://www.thestreet.com/markets/flashback-friday-whats-the-market-smoking--14804612" + str(article_id_new), title = title +str(article_id_new), text=article, agreement_index=0, article_id = article_id_new , number_of_upvotes=0)
 	Quiz.objects.create(article_id=article_id_new, quiz = quiz)
 
 	if not('pagenum' in request.GET):
@@ -88,18 +89,22 @@ def upvoting(request):
 	a=request.GET['upvote']
 
 	sourcename=request.GET['sourcename']
-	if(a=="+1"):
-		author = Author.objects.filter(name= sourcename)
-		reliability = author[0].reliability_index
-		new_reliability = reliability + math.log(1+1/author[0].number_of_posts)
-		author[0].reliability_index = new_reliability
-		author[0].save()
+	if(a=="1"):
+		author = Author.objects.filter(name= sourcename)[0]
+		reliability = author.reliability_index
+		new_reliability = reliability + math.log(1+1/author.number_of_posts)
+		if(new_reliability>10):
+			new_reliability=10
+		author.reliability_index = new_reliability
+		author.save()
 	else:
-		author = Author.objects.filter(name= sourcename)
-		reliability = author[0].reliability_index
-		new_reliability = reliability + math.log(1+1/author[0].number_of_posts)
-		author[0].reliability_index = new_reliability
-		author[0].save()
+		author = Author.objects.filter(name= sourcename)[0]
+		reliability = author.reliability_index
+		new_reliability = reliability - math.log(1+1/author.number_of_posts)
+		if(new_reliability<0):
+			new_reliability=0
+		author.reliability_index = new_reliability
+		author.save()
 	sourceid = Author.objects.filter(name=sourcename)
 	reliabilityindex = sourceid[0].reliability_index
 	#print (sourceid)
