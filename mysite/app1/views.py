@@ -24,17 +24,10 @@ def articles(request):
 	if('upvote' in request.GET and 'articleid' in request.GET):
 		upv =request.GET['upvote']
 		aid=request.GET['articleid']
-
 		a=Articles.objects.filter(article_id = int(aid))[0]
-		#print (a)
 		if(upv=="1"):
-
-			
 			a.number_of_upvotes=a.number_of_upvotes+1
 			a.save()
-
-		
-
 		else:
 			a.number_of_upvotes=a.number_of_upvotes-1
 			a.save()
@@ -52,7 +45,7 @@ def articles(request):
 def news(request):
 	if not('pagenum' in request.GET):
 		return render(request,'news.html',  {'list_articles': processedlist[:10],'pagenum':0})
-	elif ('pagenum' in request.GET):
+	else:
 		pagenum = int(request.GET['pagenum'])
 		return render(request,'news.html',  {'list_articles': processedlist[pagenum*10:(pagenum+1)*10],'pagenum':pagenum+1})
 	# return render(request,"news.html")
@@ -76,9 +69,7 @@ def handlecreatearticles(request):
 
 	
 def upvoting(request):
-	
 	a=request.GET['upvote']
-
 	sourcename=request.GET['sourcename']
 	if(a=="1"):
 		author = Author.objects.filter(name= sourcename)[0]
