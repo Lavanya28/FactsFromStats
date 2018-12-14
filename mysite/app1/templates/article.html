@@ -57,7 +57,7 @@
                 <div style="width: 100%; padding: 0px 70px">
                     <a href="./sourcepage?sourcename={{source.name}}"> <img src="../static/imgs/{{source.name}}.png" style="padding-top: 20px; width:80%;max-width:80px;"></a></br></br>
                 </div>
-                <p style="padding-bottom: 0px">Reliability Index: {{ source.reliability_index}} </br>
+                <p style="padding-bottom: 0px">Reliability Index: {{ source.reliability_index|floatformat:2}} </br>
                 Number of Posts: {{ source.number_of_posts}} </p>
                 <hr> 
                 <h3 style="padding-left: 10px">Related Posts</h3> </br>
