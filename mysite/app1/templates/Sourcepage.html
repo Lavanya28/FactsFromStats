@@ -21,7 +21,12 @@ function myFunction() {
 <!-- <button type="button" style="height:50px;width:250px" onclick="alert('Hello world!')"></button>
 <button type="button" style="height:50px;width:250px;float: right;" onclick="alert('Hello world!')" >Click Me!</button>
  -->
+
+
 <button type="button" class="btn btn-primary" style="height:50px;width:150px;" >Vote for Reliability</button>
+
+<a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px;" >upvote </button> </a>
+
 <button type="button" class="btn btn-primary" style="height:50px;width:150px;float: right;">Reliability index: {{reliabilityindex}} </button>
 {% load static %}
 <center> <img src="../static/imgs/{{sourcename}}.png" style="padding-top: 30px; width:150px;max-width:180px;"> </center>

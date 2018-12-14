@@ -30,7 +30,7 @@ def populate():
 
 	#list3 = [ ["title 1", "title 2", 6], ["title 2", "title 3", 4] , ["title 1", "title 4", 6]]
 
-	list4 = [["title 1", "quiz 1"], ["title 1", "quiz 1"] , ["title 1", "quiz 1"], ["title 1", "quiz 1"]]
+	#list4 = [["title 1", "quiz 1"], ["title 1", "quiz 1"] , ["title 1", "quiz 1"], ["title 1", "quiz 1"]]
 
 	#populate Articles table: source title text link number_of_upvotes
 
@@ -70,11 +70,11 @@ def populate():
 			continue
 
 	#populate Quiz table: article_title quiz
-	for ele in list4:
-		try:
-			Quiz.objects.create(article_id=ele[0], quiz=ele[1])
-		except:
-			continue
+	# for ele in list4:
+	# 	try:
+	# 		Quiz.objects.create(article_id=ele[0], quiz=ele[1])
+	# 	except:
+	# 		continue
 
 def cleanup():
 	a=Author.objects.all()
