@@ -29,12 +29,11 @@ def articles(request):
 		#print (a)
 		if(upv=="1"):
 
-			print("here 1")
+			
 			a.number_of_upvotes=a.number_of_upvotes+1
 			a.save()
 
-			a[0].number_of_upvotes=a[0].number_of_upvotes+1
-			a[0].save()
+		
 
 		else:
 			a.number_of_upvotes=a.number_of_upvotes-1
