@@ -37,38 +37,38 @@
         <a href="{% url 'login' %}"> <button type="button" class="btn btn-primary" style="height:50px;width:150px; float: right;" >Log out </button> 
     </div>
     <div style="clear:both"></div> -->
-    <div style="width: 100%;padding: 0px 20px;">
-        <div style="width:50%; padding: 60px 20px;float: left" >
+    <div style="width: 100%;padding: 0px 60px;">
+        <div style="width:50%; padding: 0px 20px;float: left" >
              <a href="{{ article.link}}"><H2>{{ article.title}}</H2></a>
             {{ article.text}} </br></br>
         </div>
         <div style="width:40%; float: right;padding: 0px 60px;" >
-            </br></br></br>
-            <!-- <div class="w3-light-grey" style="width:70%">
+            </br> </br>            <!-- <div class="w3-light-grey" style="width:70%">
               <div class="w3-green" style="height:20px;width:25%"></div>
             </div></br> -->
             <div>
-            <h4>Agreement Index:</h4> <p style="text-align:center; margin-bottom: 10px;"> {{ article.agreement_index|floatformat:2}}</p></br>
-            Number of Upvotes:{{article.number_of_upvotes}} 
-            <a href="./articles?articleid={{article.article_id}};upvote=1"><img src="../static/imgs/up.png" style="padding-top: 0px; width:20px;max-width:50px;"> </a>
-            <a href="./articles?articleid={{article.article_id}};upvote=-1"> <img src="../static/imgs/down.png" style="padding-top: 0px; width:20px;max-width:50px;"> </a>
-            </br></br>
-             <hr> 
-            <div style="width: 100%; padding: 0px 70px">
-                <a href="./sourcepage?sourcename={{source.name}}"> <img src="../static/imgs/{{source.name}}.png" style="padding-top: 30px; width:80%;max-width:80px;"></a></br></br>
-            </div>
-            <p style="padding-bottom: 0px">Reliability Index: {{ source.reliability_index}} </br>
-            Number of Posts: {{ source.number_of_posts}} </p>
-            <hr> 
-            <h3 style="padding-left: 10px">Related Posts</h3>
-            <table>
-                {% for item in relatedposts %}
-                <tr> 
-                    <td> <a href="./articles?articleid={{item.article_match}}"> {{ item.title }}</a></td>
-                    <td>{{ item.similarity_percentage|floatformat:1}}% match</td>
-                </tr>
-                {% endfor %}
-            </table>
+                <h4>Agreement Index:</h4> <p style="text-align:center; margin-bottom: 10px;"> {{ article.agreement_index|floatformat:2}}</p></br>
+                Number of Upvotes:{{article.number_of_upvotes}} 
+                <a href="./articles?articleid={{article.article_id}};upvote=1"><img src="../static/imgs/up.png" style="padding-top: 0px; width:20px;max-width:50px;"> </a>
+                <a href="./articles?articleid={{article.article_id}};upvote=-1"> <img src="../static/imgs/down.png" style="padding-top: 0px; width:20px;max-width:50px;"> </a>
+                </br></br>
+
+                <hr> 
+                <div style="width: 100%; padding: 0px 70px">
+                    <a href="./sourcepage?sourcename={{source.name}}"> <img src="../static/imgs/{{source.name}}.png" style="padding-top: 20px; width:80%;max-width:80px;"></a></br></br>
+                </div>
+                <p style="padding-bottom: 0px">Reliability Index: {{ source.reliability_index}} </br>
+                Number of Posts: {{ source.number_of_posts}} </p>
+                <hr> 
+                <h3 style="padding-left: 10px">Related Posts</h3> </br>
+                <table>
+                    {% for item in relatedposts %}
+                    <tr> 
+                        <td style="width:70%;"> <a href="./articles?articleid={{item.article_match}}"> {{ item.title }}</a></td>
+                        <td style="width:30%; padding-left: 20px">{{ item.similarity_percentage|floatformat:1}}% match</td>
+                    </tr>
+                    {% endfor %}
+                </table>
             </div>
         </div>
     </div>
