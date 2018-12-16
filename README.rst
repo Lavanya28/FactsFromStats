@@ -9,11 +9,10 @@ Tools & Installations required:
 
 beautifulsoup4>=4.4.1
 
-
 Pillow>=3.3.0
 
-
 PyYAML>=3.11
+
 cssselect>=0.9.2
 lxml>=3.6.0
 nltk>=3.2.1
