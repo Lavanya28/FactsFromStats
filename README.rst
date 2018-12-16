@@ -1,8 +1,11 @@
-<pre>
+
 The project files can be classified into WebScraping, Similarity computation in Articles and the Web Framework. 
+
 
 Web Scraping:
 Tools & Installations required:
+
+
 
 beautifulsoup4>=4.4.1
 Pillow>=3.3.0
@@ -34,7 +37,6 @@ The pickle files will be used to populate the database. Simply run python popula
 The webframework runs using django, run the following command inside SocialSpaces/mysite to view the site:
 python manage.py runserver 
 
-</pre>
 
 
 
