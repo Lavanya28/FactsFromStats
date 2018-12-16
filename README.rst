@@ -1,5 +1,5 @@
 The project files can be classified into WebScraping, Similarity computation in Articles and the Web Framework. 
-<br>
+&nbsp;
 Web Scraping:
 Tools & Installations required:
 
