@@ -4,7 +4,6 @@ The project files can be classified into WebScraping, Similarity computation in 
 
 Web Scraping:
 Tools & Installations required:
-<sub>
 beautifulsoup4>=4.4.1
 
 Pillow>=3.3.0
@@ -30,7 +29,6 @@ jieba3k>=0.35.1
 python-dateutil>=2.5.3
 
 tinysegmenter==0.3 
-</sub>
 The file NewsScraper.py is the article scraper and websites can be added to NewsPapers.json. The variable LIMIT can be edited to change the number of articles scraped from each website. 
 The json files can also be fed with RSS links that provide more consistent data for scraping. 
 
