@@ -37,6 +37,7 @@ The json files can also be fed with RSS links that provide more consistent data 
 Similarity computation:
 Once we have all the articles saved in the articles.pickle file, we can run the SentenceSimilarity.ipynb notebook which will preprocess the data, compute related posts and then compute the sentences that match the sentiment and then get the agreement index.
 All these will be stored in pickle files inside the mysite folder which will be used by the django to create the database:
+
 1. cleanedarticles.pickle
 
 2. sourcereliability.pickle
