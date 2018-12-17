@@ -43,6 +43,11 @@ All these will be stored in pickle files inside the mysite folder which will be 
 3. articlessimilarity.pickle
 
 Website:
+To install django set up django-trunk:
+git clone https://github.com/django/django.git
+
+pip install -e django/
+
 The pickle files will be used to populate the database. Simply run python populate_db.py to populate all tables of the database. 
 
 The webframework runs using django, run the following command inside SocialSpaces/mysite to view the site:
